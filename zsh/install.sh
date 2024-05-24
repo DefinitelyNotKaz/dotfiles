@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 config_path=$(pwd)
 
@@ -27,19 +27,32 @@ dependencies() {
       echo "➜ zsh - OK!"
     fi
     if [[ ! $brew_git ]]; then
-      read -p "git not found! Try installing it? (Y/n) " confirm && [[ $confirm == [yY] ]] || exit 1
+      read -p "git not found! Try installing it? (y/n) " confirm && [[ $confirm == [yY] ]] || exit 1
       brew install git 
     else
       echo "➜ git - OK!"
     fi
     ;;
   Linux)
-    echo 'Linux'
-    exit 1
+   if [[ -e "/etc/debian_version" ]]; then
+        if [[ $(which zsh | grep "not found") ]]; then
+          read -p "zsh not found! Try installing it? (y/n) " confirm && [[ $confirm == [yY] ]] || exit 1
+          sudo apt install zsh -y
+        else
+          echo "➜ zsh - OK!"
+        fi
+        if [[ $(which git | grep "not found") ]]; then
+          read -p "git not found! Try installing it? (y/n) " confirm && [[ $confirm == [yY] ]] || exit 1
+          sudo apt install git -y
+        else
+          echo "➜ git - OK!"
+        fi
+    fi
     ;;
   *)
     echo 'OS not supported!'
-    exit 1
+    echo 'The installation relies in git and zsh'
+    read -p "Do you want to continue? (y/n) " confirm && [[ $confirm == [yY] ]] || exit 1
     ;;
   esac
 }
