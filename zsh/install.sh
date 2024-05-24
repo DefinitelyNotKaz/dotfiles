@@ -48,15 +48,15 @@ dotfiles() {
   if [[ ! -e ".zshrc" || ! -e "kaz.zsh-theme" ]]; then
   echo "Kaz's config files not found!"
   git clone https://github.com/definitelynotkaz/dotfiles ./kaz-zsh-temp/
-  config_path="./kaz-zsh-temp/"
+  config_path="./kaz-zsh-temp/zsh"
 fi
 
 }
 
 cleanup() {
-  if [[ $(echo "$config_path" | grep "./kaz-zsh-temp/") ]]; then
+  if echo "$config_path" | grep -q "./kaz-zsh-temp/zsh"; then
     echo "Removing temp directory"
-    rm -rf $config_path
+    rm -rf "./kaz-zsh-temp"
   fi
 }
 
@@ -75,4 +75,5 @@ cp "$config_path/kaz.zsh-theme" ~/.oh-my-zsh/custom/themes/kaz.zsh-theme
 
 cleanup
 
-echo "All done run omz reload to finish up"
+zsh
+source ~/.zshrc
