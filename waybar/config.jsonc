@@ -1,0 +1,90 @@
+{
+  "layer": "top",
+  "margin-top": 10,
+  "margin-left": 10,
+  "margin-right": 10,
+  "spacing": 10,
+
+  "modules-left": ["custom/more", "custom/label", "hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": [
+    "bluetooth",
+    "custom/cpu",
+    "memory",
+    "disk",
+    "network",
+    "pulseaudio",
+    "clock"
+  ],
+
+  "clock": {
+    "format": "{:%a %e • %H:%M}",
+    "interval": 60,
+    "timezone": "Europe/Madrid"
+  },
+
+  "network": {
+    "interface": "enp3s0",
+    "format-ethernet": "",
+    "format-disconnected": "",
+    "tooltip-format-ethernet": "Upload: {bandwidthUpBytes}\nDownload: {bandwidthDownBytes}\nIp: {ipaddr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 1
+  },
+
+  "disk": {
+    "path": "/",
+    "interval": 60,
+    "format": "",
+    "tooltip-format": "Usage: {used}/{total} ({percentage_used}%)"
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": "",
+    "tooltip-format": "Usage: {used:0.1f}G/{total:0.1f} Gb"
+  },
+
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "",
+    "format-connected": ""
+  },
+
+  "pulseaudio": {
+    "format": " {icon} {volume}%",
+    "format-muted": "",
+    "format-icons": ["", "", ""],
+    "scroll-step": 1,
+    "on-click": "pavucontrol"
+  },
+
+  "hyprland/workspaces": {
+    "persistent-workspaces": {
+      "DP-1": [1, 2, 3],
+      "DP-3": [4, 5, 6],
+      "HDMI-A-1": [7, 8, 9]
+    },
+    "all-outputs": false,
+    "move-to-monitor": true
+  },
+
+  "hyprland/window": {
+    "separate-outputs": true
+  },
+
+  "custom/label": {
+    "format": "Nimbus"
+  },
+
+  "custom/more": {
+    "format": ""
+  },
+
+  "custom/cpu": {
+    "format": "",
+    "exec": "/home/kaz/.config/waybar/utils/system-info.sh",
+    "return-type": "json",
+    "interval": 30
+  }
+}

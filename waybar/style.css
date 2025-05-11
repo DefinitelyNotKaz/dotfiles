@@ -1,0 +1,48 @@
+* {
+  font-family: "Fira Code", "Font Awesome 6 Free";
+}
+
+window#waybar {
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  margin-left: 20px;
+}
+
+.modules-right {
+  padding-right: 25px;
+}
+
+.modules-left {
+  padding-left: 25px;
+}
+
+#network,
+#disk,
+#bluetooth,
+#clock,
+#pulseaudio,
+#memory,
+#custom-more,
+#custom-cpu {
+  transition: all 0.2s ease-out;
+}
+
+#network:hover,
+#disk:hover,
+#bluetooth:hover,
+#clock:hover,
+#pulseaudio:hover,
+#memory:hover,
+#custom-more:hover,
+#custom-cpu:hover {
+  color: aqua;
+}
+
+#network.disconnected {
+  color: red;
+}
+
+#workspaces button.active {
+  color: aqua;
+}
